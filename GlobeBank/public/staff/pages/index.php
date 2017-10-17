@@ -3,10 +3,10 @@
 <?php
 
   $pages = [
-    ['page' => '1', 'position' => '1', 'visible' => '1', 'menu_name' => 'About Globe Bank'],
-    ['page' => '2', 'position' => '2', 'visible' => '1', 'menu_name' => 'Consumer'],
-    ['page' => '3', 'position' => '3', 'visible' => '1', 'menu_name' => 'Small Business'],
-    ['page' => '4', 'position' => '4', 'visible' => '1', 'menu_name' => 'Commercial'],
+    ['id' => '1', 'position' => '1', 'visible' => '1', 'menu_name' => 'About Globe Bank'],
+    ['id' => '2', 'position' => '2', 'visible' => '1', 'menu_name' => 'Consumer'],
+    ['id' => '3', 'position' => '3', 'visible' => '1', 'menu_name' => 'Small Business'],
+    ['id' => '4', 'position' => '4', 'visible' => '1', 'menu_name' => 'Commercial'],
   ];
 
 ?>
@@ -18,7 +18,7 @@
   <div class="pages listing">
     <h2>Pages</h2>
     <div class="actions">
-      <a class="action" href="">Create New page</a>
+      <a class="action" href="<?php echo url_for("/staff/pages/new.php"); ?>">Create New page</a>
     </div>
 
     <table class="list">
@@ -35,12 +35,12 @@
 
       <?php foreach($pages as $page) { ?>
           <tr>
-            <td> <?php echo h($page['page']); ?> </td>
+            <td> <?php echo h($page['id']); ?> </td>
             <td> <?php echo h($page['position']); ?> </td>
             <td> <?php echo $page['visible'] == 1 ? true : false ; ?> </td>
             <td> <?php echo h($page['menu_name']); ?> </td>
-            <td> <a class="action" href="<?php echo url_for("staff/pages/show.php?page=") . h(u($page['page']));?>">View</a></td>
-            <td> <a class="action" href="">Edit</a></td>
+            <td> <a class="action" href="<?php echo url_for("staff/pages/show.php?id=") . h(u($page['id']));?>">View</a></td>
+            <td> <a class="action" href="<?php echo url_for("staff/pages/edit.php?id=") . h(u($page['id'])) . "&position=" . h(u($page['position'])) . "&visible=" . h(u($page['visible'])) . "&menu_name=" . h(u($page['menu_name'])); ?>">Edit</a></td>
             <td> <a class="action" href="">Delete</a></td>
           </tr>
         <?php } ?>
