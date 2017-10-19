@@ -19,5 +19,9 @@
   $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
   define("PUBLIC_ROOT", $doc_root);
 
+  require_once('database.php');
+  require_once('query_functions.php');
+  $db = db_connect();
+
 
 ?>
